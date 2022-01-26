@@ -1,4 +1,4 @@
-package com.example.chisomlibrary
+package com.example.bitburst
 
 import org.junit.Test
 
