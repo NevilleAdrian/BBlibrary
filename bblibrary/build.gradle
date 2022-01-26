@@ -1,19 +1,20 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'com.android.library'
+    id 'maven-publish'
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 31
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.chisomlibrary"
-        minSdk 21
-        targetSdk 30
+        minSdkVersion 21
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -25,9 +26,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
@@ -46,9 +44,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+}
 
-    implementation 'com.github.NevilleAdrian:BBlibrary:Tag'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-
-
+                groupId = 'com.github.NevilleAdrian'
+                artifactId = 'bblibrary'
+                version  = '1.0'
+            }
+        }
+    }
 }
