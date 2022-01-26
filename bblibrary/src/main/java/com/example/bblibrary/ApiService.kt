@@ -1,4 +1,4 @@
-package com.example.chisomlibrary
+package com.example.bblibrary
 
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package com.example.chisomlibrary
+package com.example.bblibrary
 
 import com.google.gson.annotations.SerializedName
 
